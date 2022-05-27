@@ -1,18 +1,14 @@
-const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const authUserId = require('./authUserId');
 
 dotenv.config();
 
 module.exports = (req, res, next) => {
+    const userId = req.body.userId
     try {
-        const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.JWTPRIVATEKEY);
-        const userId = decodedToken.userId;
-        if (req.body.userId && req.body.userId !== userId) {
+        if (userId && userId !== authUserId) 
             throw 'User ID non valable';
-        }   else{
             next();
-        }
     } catch {
         res.status(403).json({error : error | 'Requête non authentifiée !'})
     }

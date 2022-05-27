@@ -1,27 +1,28 @@
 const jwt = require('jsonwebtoken');
-const {users} = require('../models/index.js');
+const models = require('../models/index.js');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
+const User = models.users
 
 dotenv.config();
 
 exports.signup = (req, res, next) => {bcrypt.hash(req.body.password, 10)
     .then(hash => {
-      models.users.create({
+      User.create({
         firstName: req.body.firstName,
         lastName : req.body.lastName,
         email: req.body.email,
         admin: false,
         password: hash
       });
-      user.save()
+      User.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
         .catch(error => res.status(400).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
 };
 
-exports.login = (req, res, next) => { models.users.findOne({ email: req.body.email })
+exports.login = (req, res, next) => { User.findOne({ email: req.body.email })
 .then(users => {
   if (!users) {
     return res.status(401).json({ error: 'Utilisateur non trouvé !' });
@@ -48,9 +49,9 @@ exports.login = (req, res, next) => { models.users.findOne({ email: req.body.ema
 };
 
 exports.deleteUser = (req, res, next) => {
-  models.users.findOne({ where: { id: req.params.id }})  
+  User.findOne({ where: { id: req.params.id }})  
     .then(() => {
-        models.users.destroy({ where: { id: req.params.id }}) 
+        User.destroy({ where: { id: req.params.id }}) 
                   .then((user) => res.status(200).json(user)
                   ({ message: 'Compte supprimé' }))
                   .catch(error => res.status(400).json({ error }));
@@ -61,14 +62,14 @@ exports.deleteUser = (req, res, next) => {
 
 
 exports.getOneUser = (req, res, next) => {
-  models.users.findOne
+  User.findOne
   ({ where: { id: req.params.id }})
       .then((user) => res.status(200).json(user))
       .catch(error => res.status(404).json({ error }));
 };
 
 exports.getAllUsers = (req, res, next) => {
-  models.users.findAll({attributes: ['id', 'email','firstName','lastName']}) 
+  User.findAll({attributes: ['id', 'email','firstName','lastName']}) 
       .then((users) => res.status(200).json(users))
       .catch(error => res.status(400).json({ error }));
 };
@@ -76,7 +77,7 @@ exports.getAllUsers = (req, res, next) => {
 
 exports.updateUser = (req, res, next) => {
 try {
-  models.users.update({
+  User.update({
       email: req.body.email
   }, {
       where: {
