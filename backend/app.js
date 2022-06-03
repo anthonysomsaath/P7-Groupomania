@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
-const bodyParser = require('body-parser');
+const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 
 const app = express();
 app.use(express.json());
@@ -12,6 +14,12 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+
+
+app.use('/api/users', userRoutes);
+app.use('/api/auth/posts', postRoutes);
+app.use('/api/auth/comments', commentRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(helmet());
 

@@ -1,14 +1,14 @@
-const dataB = require ("../db/db");
-require('dotenv').config();
-const Sequelize = require("sequelize");
+const dotenv = require('dotenv');
+const Sequelize = require('sequelize');
+dotenv.config();
+const dataB = require('../db/db')
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD,{
-    dialect: 'mysql',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     host: process.env.DB_HOST,
-    logging: false
-});
+    dialect: 'mysql'
+  });
 
-const db = {};
+  const db = {};
 
 
 db.Sequelize = Sequelize;

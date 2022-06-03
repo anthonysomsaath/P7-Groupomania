@@ -1,17 +1,26 @@
-const {DataTypes} = require('sequelize')
-const sequelize = require('backend/db/db.js')
+const { DataTypes, Model } = require('sequelize');
 
-const post = sequelize.define('post',{
-    id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey : true,
-        autoIncrement :true
-      },
-      content: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-})
+module.exports = (sequelize, Sequelize) => sequelize.define("post", {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey : true,
+    autoIncrement :true
+  },
+  title :{
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  content: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  
+  
+},
 
-module.exports = post
+ {
+  sequelize, 
+  modelName: 'post' 
+ 
+});
