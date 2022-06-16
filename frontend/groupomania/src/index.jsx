@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Post from './pages/post'
 import Header from './components/header'
@@ -8,16 +8,15 @@ import Error from './components/error'
  
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
-            <Header />
+        <BrowserRouter>
+            <React.Fragment>
+                <Header />
+            </React.Fragment>
             <Routes>
-            <Route path="/" component={Home} />
-            <Route path="/post" component ={Post} />
-            <Route>
-                <Error />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/post" element ={<Post />} />
             </Routes>
-        </Router>
+        </BrowserRouter>
     </React.StrictMode>,
      document.getElementById('root')
 )
