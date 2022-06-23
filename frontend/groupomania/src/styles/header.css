@@ -7,6 +7,7 @@
 	justify-content: space-between;
 	flex-direction: row;
 	align-items: center;
+    width:100%;
 }
 .title{
     padding-left: 32px;
@@ -23,7 +24,7 @@
     height: 45px;
 	width: 45px;
 }
-.menu ul{
+.menu {
     font-size: 20px;
     list-style: none;
           display: flex;
@@ -32,9 +33,10 @@
           margin-top: 0px;
 }
 
-.menu li
+.menu a
         {
-          padding-top: 40px;
           margin-bottom: 15px;
           width:130px;
+          padding-top: 10px;
+          text-decoration: none;
         }

@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
+const cors = require("cors");
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const commentRoutes = require('./routes/comment');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

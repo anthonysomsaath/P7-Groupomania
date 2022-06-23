@@ -1,0 +1,35 @@
+.usernameLogo, .passwordLogo {
+height: 30px;
+}
+.usernameField, .passwordField {
+    display: flex;
+    justify-content: center;
+}
+.loginLogo {
+    height: 50px;
+    width: 50px;
+    border-radius: 130px;
+    border: 2px;
+    border-color: black;
+
+}
+.body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.loginSpace {
+    border: 2px;
+    width : 100%;
+    height: 100%;
+    padding-top: 100px;
+
+}
+
+input{
+    width: 250px;
+    height: 20px;
+    border-radius: 60px;
+    margin-top: 5px;
+}
+
