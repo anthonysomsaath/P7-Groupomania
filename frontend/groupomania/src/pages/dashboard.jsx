@@ -1,7 +1,13 @@
-import React from "react"
+import React, { useState, useEffect } from 'react'
+import HeaderLogged from '../components/headerLogged'
 
 function Dashboard() {
- return <h1>Bienvenue</h1>
+ return (
+ <div>
+    <HeaderLogged>
+    </HeaderLogged>
+ </div>
+ )
 }
 
 export default Dashboard

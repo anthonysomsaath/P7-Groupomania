@@ -13,10 +13,8 @@ function HeaderLogged() {
             <nav className ="menu">
                     <Link to="/user">Profil</Link>
                     <Link to="/signout">Déconnexion</Link>
+                    <Link to="/post">Nouveau post</Link>
             </nav>
-            <div className='newPost'>
-            Créer un post
-            </div>
             </div>
 
         </header>

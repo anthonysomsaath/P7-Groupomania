@@ -1,32 +1,27 @@
 const dotenv = require('dotenv');
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize')
+
 dotenv.config();
-const dataB = require('../db/db')
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
     host: process.env.DB_HOST,
     dialect: 'mysql'
   });
 
-  const db = {};
 
+const posts = require("./post.js")(sequelize, Sequelize);
+const users = require("./user.js")(sequelize, Sequelize.DataTypes)
+const comments = require("./comment.js")(sequelize, Sequelize)
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+users.hasMany(posts)
+posts.belongsTo(users)
 
-db.posts = require("./post.js")(sequelize, Sequelize);
-db.users = require("./user.js")(sequelize, Sequelize)
-db.comments = require("./comment.js")(sequelize, Sequelize)
+posts.hasMany(comments)
+comments.belongsTo(posts)
 
-db.users.hasMany(db.posts)
-db.posts.belongsTo(db.users)
+users.hasMany(comments)
+comments.belongsTo(users)
 
-db.posts.hasMany(db.comments)
-db.comments.belongsTo(db.posts)
+sequelize.sync({ alter:true });
 
-db.users.hasMany(db.comments)
-db.comments.belongsTo(db.users)
-
-db.sequelize.sync({ alter:true });
-
-module.exports = db;
+module.exports = {users, posts, comments};

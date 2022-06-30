@@ -1,25 +1,23 @@
-import loginLogo from "../images/loginLogo.png"
-import emailLogo from "../images/emailLogo.png"
-import passwordLogo from "../images/passwordLogo.png"
+/*import { addPost, getPosts } from "../actions/postActions";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "../styles/login.css"
 
-function Post() {
+function newPost() {
+    const [post, setPost] = useState("");
+    
     return (
-        <div className="loginSpace">
-            <img src={loginLogo} alt="logo connexion" className='loginLogo'/>
-            <div className="loginFields">
-                <div className ="usernameField">
-                <img src={emailLogo} alt="logo email" className="usernameLogo" />
-                <input type="text" placeholder ="Nom d'utilisateur" className="username" />
-                </div>
-                <div className ="passwordField">
-                <img src={passwordLogo} alt="logo cadenas" className="passwordLogo" />
-                <input type="text" placeholder ="Mot de passe" className="password" />
-                </div>
-            </div>
-            <button>Connexion</button>
+        <div className="post-form">
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Ecrire un message"
+          onChange={(event) => setPost(event.target.value)}
+          value={post}
+        />
         </div>
     )
+
 }
 
-export default Post
+export default newPost*/

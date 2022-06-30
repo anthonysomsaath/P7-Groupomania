@@ -23,6 +23,6 @@ app.use('/api/auth/posts', postRoutes);
 app.use('/api/auth/comments', commentRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use(helmet());
+app.use(helmet({crossOriginResourcePolicy: false}));
 
 module.exports = app;
