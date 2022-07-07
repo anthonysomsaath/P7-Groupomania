@@ -6,7 +6,7 @@ import passwordLogo from "../images/passwordLogo.png"
 import "../styles/login.css"
 import axios from "../api/axios";
 import { Link } from "react-router-dom";
-const LOGIN_URL = '/login';
+const LOGIN_URL = '/api/users/login';
 
 const Login = () => {
     const {setAuth}=useContext(AuthContext)
@@ -29,12 +29,13 @@ const Login = () => {
       setPassword('');
       setSuccess(true);
     }
-    /*const handleSubmit = async (e) =>{
+    /*
+    const handleSubmit = async (e) =>{
         e.preventDefault();
        try{
         const response = await axios.post(LOGIN_URL, JSON.stringify({email, password}),
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           withCredentials: true
         });
         console.log(JSON.stringify(response?.data));
@@ -56,14 +57,15 @@ const Login = () => {
         }
         errRef.current.focus();
        }
-    }*/
+    }
+    */
         
     return (
       <>
       {success ? (
           <section>
               <h1>You are logged in!</h1>
-              <Link to={'/'}>
+              <Link to={'/dashboard'}>
                         Home
                 </Link>
           </section>

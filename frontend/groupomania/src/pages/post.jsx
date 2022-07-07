@@ -1,23 +1,34 @@
-/*import { addPost, getPosts } from "../actions/postActions";
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import "../styles/login.css"
+import fetchApi from "../api/fetchApi";
+import { deletePost } from "../actions/postActions";
 
-function newPost() {
-    const [post, setPost] = useState("");
-    
-    return (
-        <div className="post-form">
-        <textarea
-          name="message"
-          id="message"
-          placeholder="Ecrire un message"
-          onChange={(event) => setPost(event.target.value)}
-          value={post}
-        />
+const Post = ({...post})=> {
+
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    if(window.confirm("Are you sure you want to delete this message?")){
+      deletePost(post.id) 
+      post.onErase() 
+    }
+  };
+
+  return (
+    <div classname ="postCard">
+      <div className ="cardHeader">
+      <div>Post title</div>
+      <div>Post User</div>
+      <div>
+        <a href ="#" onClick={onClickDelete}>Delete option</a>
         </div>
-    )
-
+      </div>
+      <div className="cardBody">
+        <div>Post content</div>
+      </div>
+      <div className="cardFooter">
+        <div>Comments</div>
+      </div>
+    </div>
+    
+  )
 }
 
-export default newPost*/
+export default Post

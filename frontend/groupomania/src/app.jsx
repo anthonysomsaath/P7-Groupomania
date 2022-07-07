@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import Login from './pages/login'
 import SignUp from './pages/signup'
 import Dashboard from "./pages/dashboard"
-import Post from "./pages/post"
+import CreatePost from "./pages/createPost"
  
 function App(){
   return (
@@ -14,7 +14,7 @@ function App(){
             <Route path='/dashboard' element ={<Dashboard />} />
             <Route path="/login" element ={<Login />} />
             <Route path="/signup" element ={<SignUp />} />
-            <Route path="/post" element = {<Post />} />
+            <Route path="/post" element = {<CreatePost />} />
             </Routes>
         </BrowserRouter>
   )
