@@ -22,14 +22,14 @@ const Login = () => {
       emailRef.current.focus();
     }, [])
 
-    const handleSubmit = async (e) => {
+    /*const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(email);
       setEmail('');
       setPassword('');
       setSuccess(true);
-    }
-    /*
+    }*/
+    
     const handleSubmit = async (e) =>{
         e.preventDefault();
        try{
@@ -58,7 +58,7 @@ const Login = () => {
         errRef.current.focus();
        }
     }
-    */
+    
         
     return (
       <>
